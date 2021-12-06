@@ -1,23 +1,66 @@
+import collections
 def mypuzzleday6():
     fishList = [3,5,1,2,5,4,1,5,1,2,5,5,1,3,1,5,1,3,2,1,5,1,1,1,2,3,1,3,1,2,1,1,5,1,5,4,5,5,3,3,1,5,1,1,5,5,1,3,5,5,3,2,2,4,1,5,3,4,2,5,4,1,2,2,5,1,1,2,4,4,1,3,1,3,1,1,2,2,1,1,5,1,1,4,4,5,5,1,2,1,4,1,1,4,4,3,4,2,2,3,3,2,1,3,3,2,1,1,1,2,1,4,2,2,1,5,5,3,4,5,5,2,5,2,2,5,3,3,1,2,4,2,1,5,1,1,2,3,5,5,1,1,5,5,1,4,5,3,5,2,3,2,4,3,1,4,2,5,1,3,2,1,1,3,4,2,1,1,1,1,2,1,4,3,1,3,1,2,4,1,2,4,3,2,3,5,5,3,3,1,2,3,4,5,2,4,5,1,1,1,4,5,3,5,3,5,1,1,5,1,5,3,1,2,3,4,1,1,4,1,2,4,1,5,4,1,5,4,2,1,5,2,1,3,5,5,4,5,5,1,1,4,1,2,3,5,3,3,1,1,1,4,3,1,1,4,1,5,3,5,1,4,2,5,1,1,4,4,4,2,5,1,2,5,2,1,3,1,5,1,2,1,1,5,2,4,2,1,3,5,5,4,1,1,1,5,5,2,1,1]
     #fishList = [3,4,3,1,2]
-    for i in range(0,256,7):
-        for j in range(len(fishList)):
-            if fishList[j] != -1:
-                fishList.append(-1)
+    #fishList.sort()
+    mydict = {}
+    def fOne(value:int):
+        day = 0
+        #Part one
+        day = value+1
+        #add to dictionary if not already there
+        if day not in mydict:
+            mydict[day] = 1
+        else:
+            mydict[day] += 1
+        #part two
+        for i in range(day+7, 256+1, 7):
+            if i not in mydict:
+                mydict[i] = 1
             else:
-                fishList[j] = 1
+                mydict[i] += 1
 
-    #llego hasta el dia 252, me faltan 4 dias
+    def fTwo(day:int, numBorns:int):
+        #Part one
+        day = day+9
+        if day > 256:
+            return False
+        else:
+            #add to dictionary if not already there
+            if day not in mydict:
+                mydict[day] = numBorns
+            else:
+                mydict[day] += numBorns
+
+        #part two
+        for i in range(day+7, 256+1, 7):
+            if i not in mydict:
+                mydict[i] = numBorns
+            else:
+                mydict[i] += numBorns
+    
     for i in range(len(fishList)):
-        if fishList[i] == 0 or fishList[i] == 1 or fishList[i] == 2 or fishList[i] == 6:
-            fishList.append(8)
+        fOne(fishList[i])
+    
+    result = collections.OrderedDict(sorted(mydict.items()))
+    print(result)
+    
+    for i in range(256+1):
+        if i in mydict:
+            fTwo(i, mydict[i])
 
-    return len(fishList)
+    aux = 0
+    for key, value in mydict.items():
+        aux+=value
 
-def getList():
-    with open("Day6\day6_puzzle1_list.txt") as f:
-        return [str(line.strip()) for line in f]
+    print(mydict)
+    return len(fishList) + aux
+        
+
 
 #print the result
 print(mypuzzleday6())
+
+
+#jajaja este codigo sí me sacó el aire, mi cabeza casi explota, sé que
+#debe haber una forma mas elegante y óptima de hacerlo, pero no le hallo.

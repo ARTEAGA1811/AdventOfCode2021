@@ -14,7 +14,7 @@ def mypuzzleday6():
         else:
             mydict[day] += 1
         #part two
-        for i in range(day+7, 256+1, 7):
+        for i in range(day+7, 80+1, 7):
             if i not in mydict:
                 mydict[i] = 1
             else:
@@ -23,7 +23,7 @@ def mypuzzleday6():
     def fTwo(day:int, numBorns:int):
         #Part one
         day = day+9
-        if day > 256:
+        if day > 80:
             return False
         else:
             #add to dictionary if not already there
@@ -33,7 +33,7 @@ def mypuzzleday6():
                 mydict[day] += numBorns
 
         #part two
-        for i in range(day+7, 256+1, 7):
+        for i in range(day+7, 80+1, 7):
             if i not in mydict:
                 mydict[i] = numBorns
             else:
@@ -45,7 +45,7 @@ def mypuzzleday6():
     result = collections.OrderedDict(sorted(mydict.items()))
     print(result)
     
-    for i in range(256+1):
+    for i in range(80+1):
         if i in mydict:
             fTwo(i, mydict[i])
 
@@ -60,7 +60,3 @@ def mypuzzleday6():
 
 #print the result
 print(mypuzzleday6())
-
-
-#jajaja este codigo sí me sacó el aire, mi cabeza casi explota, sé que
-#debe haber una forma mas elegante y óptima de hacerlo, pero no le hallo.
