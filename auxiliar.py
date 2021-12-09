@@ -1,5 +1,3 @@
-gg = []
-# aux = list(gg)[0]
-# print(aux)
-aa = "abcde"
-print(set(aa))
+gg = "8679876423456789989987898954"
+#get an array with the numbers of the gg
+gg_array = [int(i) for i in gg]
