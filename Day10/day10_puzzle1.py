@@ -1,41 +1,27 @@
 def mypuzzle(route:list):
     input = {"(","[","<","{"}
-    output = {")","]",">","}"}
-    aux = {")":"(","]":"[",">":"<","}":"{"}
-    aux2 = {"(":")","[":"]","<":">","{":"}"}
-    score = {"}":3,")":1,"]":2,">":4}
+    aux = {")":"(","]":"[",">":"<","}":"{"}  
+    score = {"}":1197,")":3,"]":57,">":25137}
     total = 0
     myStack = []
-    sumTotal = []
     for i in range(len(route)):
-        
-        flag = False
         for j in range(len(route[i])):
             if route[i][j] in input:
                 myStack.append(route[i][j])
-                
-            elif route[i][j] in output:
+            else:    
                 if len(myStack) == 0:
-                    flag = True
+                    total += score[route[i][j]]
                     break
-
+    
                 elif myStack[-1] == aux[route[i][j]]:
                     myStack.pop() 
                 else:
-                    flag = True
+                    total += score[route[i][j]]
                     break
-        if flag == False:
-            total = 0
-            if len(myStack) != 0:
-                for k in range(len(myStack)-1,-1,-1):
-                    total = total * 5
-                    total = total + score[aux2[myStack[k]]]
-                sumTotal.append(total)
+
         myStack = []
-    sumTotal.sort()
-    print(sumTotal)
-    media = len(sumTotal)//2
-    return sumTotal[media]
+    return total
+
    
   
 def getList():
