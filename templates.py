@@ -7,7 +7,7 @@ def getList(fileName:str):
     with open(fileName) as f:
         return [str(line.strip()) for line in f]
 
-fileName = "Day##\day##_puzzle1_list.txt"
+fileName = "Day##\day##_puzzle_list.txt"
 #fileName = "Day##\\test.txt"
 
 print(mypuzzle(getList(fileName)))
