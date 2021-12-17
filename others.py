@@ -47,17 +47,21 @@
 # print(arr)
 
 
-def convertHexToBinList(hexString:str):
-    aux = ""
-    for i in hexString:
-        aux += bin(int(i, 16))[2:].zfill(4)
-    return aux
+# def convertHexToBinList(hexString:str):
+#     aux = ""
+#     for i in hexString:
+#         aux += bin(int(i, 16))[2:].zfill(4)
+#     return aux
 
 
     
 
-#print(convertHexToBinList("8A004A801A8002F478"))
-# print(convertHexToBinList("D2FE28"))
-print(convertHexToBinList("38006F45291200"))
-print(convertHexToBinList("3"))
-#print(bin(int("3",16))[2:].zfill(4))
+# #print(convertHexToBinList("8A004A801A8002F478"))
+# # print(convertHexToBinList("D2FE28"))
+# print(convertHexToBinList("38006F45291200"))
+# print(convertHexToBinList("3"))
+# #print(bin(int("3",16))[2:].zfill(4))
+
+for i in range (-10, 4,1):
+    print(i)
+    
