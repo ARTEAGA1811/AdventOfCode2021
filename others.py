@@ -59,9 +59,30 @@
 # #print(convertHexToBinList("8A004A801A8002F478"))
 # # print(convertHexToBinList("D2FE28"))
 # print(convertHexToBinList("38006F45291200"))
-# print(convertHexToBinList("3"))
-# #print(bin(int("3",16))[2:].zfill(4))
+# # print(convertHexToBinList("3"))
+# # #print(bin(int("3",16))[2:].zfill(4))
 
-for i in range (-10, 4,1):
-    print(i)
-    
+# aux = [3,2,1]
+# #determine if aux is a number or a list
+# if type(aux) == list:
+#     print("list")
+# else:
+#     print("number")
+
+
+
+# [-1, -1, -1, -1, -1, 0, -1, -1, 4, -1, 7, 6, -2, -2]
+
+
+
+
+def getMagnitude(currSum:list):
+        if type(currSum) == int:
+            return currSum
+
+        total = 0
+        total+=getMagnitude(currSum[0]) * 3
+        total+=getMagnitude(currSum[1]) * 2
+        return total
+
+print(getMagnitude([[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]))
