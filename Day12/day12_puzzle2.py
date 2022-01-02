@@ -1,9 +1,10 @@
 def mypuzzle(arr:list):
-    logs = {}
-    visited = {"start":1}
-    myauz = {}
-    ways = 0
+    logs = {} #diccionario con los registros
+    visited = {"start":1} # diccionario con los nodos visitados
+    myauz = {} #set auxiliar
+    ways = 0 # número total de caminos
     for i in arr:
+        #en este ciclo voy a guardar las conexiones de cada nodo
         aux = i.split("-")
 
         if aux[0] not in logs:
@@ -24,10 +25,10 @@ def mypuzzle(arr:list):
         if aux[1] not in myauz:
             myauz[aux[1]] = set()
     
+    # aquí voy a recorrer los nodos e ir definiendo las rutas posibles
     def bfs(letra:str):
         #print(letra)
-        #base case
-        
+        #casos base       
         if letra == "end":
             return 1
         if letra in visited:
@@ -39,12 +40,11 @@ def mypuzzle(arr:list):
                     return 0
                 
             visited[letra] += 1
-            
-        
+                    
         if letra not in visited and letra.islower():
             visited[letra] = 1
 
-        #recursive case
+        #caso recursivo
         total = 0
         for i in logs[letra]:
             if i not in myauz[letra]:
